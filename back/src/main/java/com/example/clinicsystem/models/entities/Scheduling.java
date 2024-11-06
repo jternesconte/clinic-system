@@ -14,11 +14,11 @@ public class Scheduling {
     private int id;
 
     @ManyToOne
-    @Column(name = "patient_id", nullable = false)
+    @JoinColumn(name = "patient_id", nullable = false)
     private Patient patientId;
 
     @ManyToOne
-    @Column(name = "doctor_id", nullable = false)
+    @JoinColumn(name = "doctor_id", nullable = false)
     private Doctor doctorId;
 
     @Column(name = "scheduling_date", nullable = false)
