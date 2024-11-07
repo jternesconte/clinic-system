@@ -2,6 +2,7 @@ package com.example.clinicsystem.models.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,7 +17,7 @@ public class Patient {
     private String name;
 
     @Column(name = "birth_date", nullable = false)
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Column(length = 15, nullable = false)
     private String phone;
@@ -31,7 +32,7 @@ public class Patient {
 
     }
 
-    public Patient(String name, Date birthDate, String phone, String email, String address) {
+    public Patient(String name, LocalDate birthDate, String phone, String email, String address) {
         this.name = name;
         this.birthDate = birthDate;
         this.phone = phone;
@@ -55,11 +56,11 @@ public class Patient {
         this.name = name;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
