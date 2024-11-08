@@ -3,7 +3,8 @@ package com.example.clinicsystem.models.entities;
 import com.example.clinicsystem.utils.BooleanToStringConverter;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "scheduling")
@@ -22,7 +23,10 @@ public class Scheduling {
     private Doctor doctorId;
 
     @Column(name = "scheduling_date", nullable = false)
-    private LocalDateTime schedulingDate;
+    private LocalDate schedulingDate;
+
+    @Column(name = "scheduling_time", nullable = false)
+    private LocalTime schedulingTime;
 
     @Convert(converter = BooleanToStringConverter.class)
     @Column(name = "status", nullable = false)
@@ -35,10 +39,11 @@ public class Scheduling {
 
     }
 
-    public Scheduling(Patient patientId, Doctor doctorId, LocalDateTime schedulingDate, Boolean status, String notes) {
+    public Scheduling(Patient patientId, Doctor doctorId, LocalDate schedulingDate, LocalTime schedulingTime, Boolean status, String notes) {
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.schedulingDate = schedulingDate;
+        this.schedulingTime = schedulingTime;
         this.status = status;
         this.notes = notes;
     }
@@ -67,12 +72,20 @@ public class Scheduling {
         this.doctorId = doctorId;
     }
 
-    public LocalDateTime getSchedulingDate() {
+    public LocalDate getSchedulingDate() {
         return schedulingDate;
     }
 
-    public void setSchedulingDate(LocalDateTime schedulingDate) {
+    public void setSchedulingDate(LocalDate schedulingDate) {
         this.schedulingDate = schedulingDate;
+    }
+
+    public LocalTime getSchedulingTime() {
+        return schedulingTime;
+    }
+
+    public void setSchedulingTime(LocalTime schedulingTime) {
+        this.schedulingTime = schedulingTime;
     }
 
     public Boolean getStatus() {
